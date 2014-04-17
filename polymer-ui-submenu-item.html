@@ -36,7 +36,7 @@ license that can be found in the LICENSE file.
 <link rel="import" href="../polymer-ui-menu/polymer-ui-menu.html">
 <link rel="import" href="../polymer-collapse/polymer-collapse.html">
 
-<polymer-element name="polymer-ui-submenu-item" extends="polymer-ui-menu-item" attributes="active selected selectedItem">
+<polymer-element name="polymer-ui-submenu-item" extends="polymer-ui-menu-item" attributes="selected selectedItem">
   <template>
     <link rel="stylesheet" href="polymer-ui-submenu-item.css">
     <polymer-ui-menu-item id="item" src="{{src}}" label="{{label}}" icon="{{icon}}" active?="{{active}}" on-tap="{{activate}}">
@@ -49,7 +49,9 @@ license that can be found in the LICENSE file.
   </template>
   <script>
     Polymer('polymer-ui-submenu-item', {
-      active: false,
+      publish: {
+        active: {value: false, reflect: true}
+      },
       collapsed: true,
       get items() {
         return this.$.menu.items;
